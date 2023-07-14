@@ -162,9 +162,11 @@ def _inflect_file(fnin, fnout, model_path):
     
 
 if __name__ == "__main__":
-    #print("\n".join(["\t".join(inflected_lemma) for inflected_lemma in inflect(inp)]))
+    print("Enter a lemma to be inflected:", file=sys.stderr)
     for line in sys.stdin:
         line = line.strip()
         if line !="":
             print("\t".join(inflect(line)))
+            print("", file=sys.stderr)
+            print("Enter a lemma to be inflected:", file=sys.stderr)
 
