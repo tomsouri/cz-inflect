@@ -12,6 +12,8 @@ The guesser is a LSTM-based encoder-decoder architecture with attention, trained
 To build the project requirements, run
 `bash build.sh`
 
+You will need approx. 5GB disk space for installing the requirements.
+
 To run the inflection script after building the requirements, run
 `bash run.sh`
 
