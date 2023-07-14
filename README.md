@@ -2,6 +2,11 @@
 
 ## Inflection of Czech nouns
 
+This project provides a morphological guesser for inflection of Czech nouns. It focuses on inflection of out-of-vocabulary words. (For other words we recommend MorphoDiTa tool https://lindat.mff.cuni.cz/services/morphodita/ )
+
+The guesser is a LSTM-based encoder-decoder architecture with attention, trained with OpenNMT-py library on a training dataset consisting of approx. 360k Czech noun lemmata (data source: MorfFlex2.0 https://lindat.mff.cuni.cz/repository/xmlui/handle/11234/1-3186 ).
+
+
 ### On Linux
 
 To build the project requirements, run
