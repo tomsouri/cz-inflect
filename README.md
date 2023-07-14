@@ -25,6 +25,7 @@ S1	S2	S3	S4	S5	S6	S7	P1	P2	P3	P4	P5	P6	P7
 
 (S=singular, P=plural, 1..7 are cases numbered as usual in Czech morphology: 1=nominative, ..., 7=instrumental)
 
+#### Examples
 Example input:
 jablko
 
