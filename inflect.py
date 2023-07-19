@@ -11,7 +11,8 @@
 # Example of incorrect prediction:
 # pes
 # pes	pesu	psi	pes	pese	psi	psem	psi	psů	psům	pse	psi	pesech	psi
-
+#
+# To run the prediction with another (ONMT-py trained), put it in cz-inflect/models/ and edit appropriately the variable `model` in this script to correspond to its name.
 
 from argparse import Namespace
 from onmt.bin.translate import translate
@@ -32,9 +33,10 @@ import random
 #|   |- tmp_datetime.src
 #|   |- tmp_datetime.tgt
 
+model = "lstm_v0.44.pt"
 
-model_path = "models/lstm_v0.44.pt"
-inp=["jablko", "bagr", "altruista", "internetíř", "lingebra"]
+
+#inp=["jablko", "bagr", "altruista", "internetíř", "lingebra"]
 
 def __get_true_path_to_base():
     def removesuffix(x, suf):
@@ -48,6 +50,11 @@ def __get_true_path_to_base():
     base_dir = removesuffix(file_path, suffix)
 
     return base_dir
+
+modelsdir = os.path.join(__get_true_path_to_base(), "models")
+
+model_path = os.path.join(modelsdir, model)
+
 
 def rand():
     return str(random.randint(100_000, 999_999))
@@ -131,12 +138,12 @@ def inflect(lemmata):
     _inflect_file(filename_in, filename_out, model_path)
     predictions = readlines(filename_out)
 
-    #try:
-    os.remove(filename_in)
-    os.remove(filename_out)
-    #except OSError as e:
-    # If it fails, inform the user.
-    # #print("Warning: Failed to remove the tmp files in folder tmp/")
+    try:
+        os.remove(filename_in)
+        os.remove(filename_out)
+    except OSError as e:
+        # If it fails, inform the user.
+        print("Warning: Failed to remove the tmp files in folder tmp/")
     #print("Please, remove them manually")
     
     # Convert from neural format back to normal text 
@@ -153,18 +160,20 @@ def _inflect_file(fnin, fnout, model_path):
     opt = Namespace(align_debug=False, alpha=1.0, attn_debug=False, avg_raw_probs=False, ban_unk_token=False, batch_size=30, batch_type='sents', beam_size=5, beta=-0.0, block_ngram_repeat=0, config=None, coverage_penalty='none', data_type='text', decoder_start_token='<s>', dump_beam='', fp32=False, fuzzy_corpus_ratio=0.1, fuzzy_threshold=70, fuzzy_token='｟fuzzy｠', fuzzymatch_max_length=70, fuzzymatch_min_length=4, gpu=-1, ignore_when_blocking=[], insert_ratio=0.0, int8=False, length_penalty='avg', log_file='', log_file_level='0', mask_length='subword', mask_ratio=0.0, max_length=250, min_length=0, models=[model_path], n_best=1, norm_numbers=True, norm_quote_commas=True, output=fnout, penn=True, permute_sent_ratio=0.0, phrase_table='', poisson_lambda=3.0, post_remove_control_chars=False, pre_replace_unicode_punct=False, prior_tokenization=False, random_ratio=0.0, random_sampling_temp=1.0, random_sampling_topk=0, random_sampling_topp=0.0, ratio=-0.0, replace_length=-1, replace_unk=False, report_align=False, report_time=False, reversible_tokenization='joiner', rotate_ratio=0.0, save_config=None, seed=-1, src=fnin, src_feats=None, src_lang='', src_onmttok_kwargs="{'mode': 'none'}", src_prefix='', src_seq_length=192, src_subword_alpha=0, src_subword_model=None, src_subword_nbest=1, src_subword_type='none', src_subword_vocab='', src_suffix='', src_vocab_threshold=0, stepwise_penalty=False, switchout_temperature=1.0, tgt=None, tgt_file_prefix=False, tgt_lang='', tgt_onmttok_kwargs="{'mode': 'none'}", tgt_prefix='', tgt_seq_length=192, tgt_subword_alpha=0, tgt_subword_model=None, tgt_subword_nbest=1, tgt_subword_type='none', tgt_subword_vocab='', tgt_suffix='', tgt_vocab_threshold=0, tm_delimiter='\t', tm_path=None, tokendrop_temperature=1.0, tokenmask_temperature=1.0, transforms=[], upper_corpus_ratio=0.01, verbose=False, with_score=False)
     
     # Suppress stderr for translation    
-    save_stdout = sys.stderr
-    sys.stderr = open(os.devnull, "w")
+    #save_stdout = sys.stderr
+    #sys.stderr = open(os.devnull, "w")
     
     translate(opt)
     
-    sys.stderr = save_stdout
+    #sys.stderr = save_stdout
     
 
 if __name__ == "__main__":
-    #print("\n".join(["\t".join(inflected_lemma) for inflected_lemma in inflect(inp)]))
+    print("Enter a lemma to be inflected:", file=sys.stderr)
     for line in sys.stdin:
         line = line.strip()
         if line !="":
             print("\t".join(inflect(line)))
+            print("", file=sys.stderr)
+            print("Enter a lemma to be inflected:", file=sys.stderr)
 
