@@ -6,6 +6,8 @@ This project provides a morphological guesser for inflection of Czech nouns. It 
 
 The guesser is a LSTM-based encoder-decoder architecture with attention, trained with OpenNMT-py library on a training dataset consisting of approx. 360k Czech noun lemmata (data source: MorfFlex2.0 https://lindat.mff.cuni.cz/repository/xmlui/handle/11234/1-3186 ).
 
+The work in this project and all theoretical and technical details are described in the thesis: http://hdl.handle.net/20.500.11956/184286 .
+
 
 ### On Linux
 
