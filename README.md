@@ -11,9 +11,9 @@ The paper by Tomáš Sourada, Jana Straková, Rudolf Rosa, accepted to LREC-COLI
 [A bachelor thesis Automatic inflection in Czech language](http://hdl.handle.net/20.500.11956/184286) describes the work more profoundly, including all theoretical and technical details.
 
 You can find the material presenting the project in the [presentations directory](presentations/):
--[poster](presentations/poster-OOVs-in-the-Spotlight-How-to-Inflect-them.pdf)
--[handout slides](presentations/handout-OOVs-in-the-Spotlight-How-to-Inflect-them.pdf)
--[video presentation](presentations/video-OOVs-in-the-Spotlight-How-to-Inflect-them.mp4)
+- [poster](presentations/poster-OOVs-in-the-Spotlight-How-to-Inflect-them.pdf)
+- [handout slides](presentations/handout-OOVs-in-the-Spotlight-How-to-Inflect-them.pdf)
+- [video presentation](presentations/video-OOVs-in-the-Spotlight-How-to-Inflect-them.mp4)
 
 ## Inflection of Czech nouns
 
