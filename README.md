@@ -2,7 +2,7 @@
 
 This repository contains library for inflection of Czech nouns, which is available under the CC BY-NC-SA 4.0 license. The work is described in the following paper:
 
-The paper by Tomáš Sourada, Jana Straková, Rudolf Rosa, accepted to LREC-COLING 2024: [OOVs in the Spotlight: How to Inflect them?](https://aclanthology.org/2024.lrec-main.1091)
+The paper by Tomáš Sourada, Jana Straková, Rudolf Rosa, presented at LREC-COLING 2024: [OOVs in the Spotlight: How to Inflect them?](https://aclanthology.org/2024.lrec-main.1091)
 
 [Czech OOV Inflection Dataset](http://hdl.handle.net/11234/1-5471), introduced in the paper, stored at LINDAT repository, aiming at rigorous evaluation of inflection in out-of-vocabulary conditions.
 
